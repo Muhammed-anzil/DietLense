@@ -16,7 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from diet_app.views import *
+from rest_framework.authtoken.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('signup/',SignupView.as_view()),
+    path('token',obtain_auth_token),
+    path('createprofile/',ProfileView.as_view()),
+    path('profile/<int:pk>/', ProfileRetrieveView.as_view()),
+    path('user/<int:pk>/', UserRetrieveView.as_view()),
+    path('foodlog',FoodLogCreateView.as_view()),
+    path('foodlog/<int:pk>/',FoodLogRetriveView.as_view()),
+    path('summery',DietSummeryView.as_view()),
+
+
 ]

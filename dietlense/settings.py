@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'diet_app',
+    'rest_framework.authtoken'
 
 ]
 
@@ -134,4 +135,9 @@ MAILERS = {
 
 #Custom User model confing
 
-AUTH_USER_MODEL="diet_app.CustomUser"
+AUTH_USER_MODEL = "diet_app.CustomUser"
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "diet_app.backends.EmailBackend",
+]
